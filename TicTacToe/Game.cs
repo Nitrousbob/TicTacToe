@@ -7,17 +7,19 @@ namespace TicTacToe
     internal class Game
     {
 
-        public Player player { get; private set; }  //property to hold the players
+        public Player Player { get; private set; }  //property to hold the players
 
-        public Game(Player player1, Player player2)
+        public Board Board { get; private set; } //property to hold the board
+        public Game(Player player1, Player player2, Board Board)
         {
-            this.player = player1;
-            this.player = player2;
+            Player Player1 = player1;
+            Player Player2 = player2;
+            Board = new Board();  //create a new board
         }
 
         public void turn()
         {
-            Display.showBoard();
+            Display.showBoard(Board); //send the board object
         }
     }
 }

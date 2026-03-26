@@ -15,7 +15,10 @@
 
         public Board()
         {
-
+            for (int i = 0;  i < 9; i++) 
+                { 
+                board[i] = new Mark(); 
+                }
         }
         
 

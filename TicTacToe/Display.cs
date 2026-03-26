@@ -13,7 +13,7 @@ namespace TicTacToe
         }
 
 
-        public static void showBoard()
+        public static void showBoard(Board board) //get the board object in to do work
         {
             int n = 0;
 
@@ -32,7 +32,7 @@ namespace TicTacToe
                 
                 for (int j = 0; j < 3; j++)
                 {
-                    if (board.Mark[n] == Board.Mark.Empty)
+                    if (Board.Mark[n] == Board.Mark.Empty)
                     {
                         Console.Write($"[{n}] ");  //write the numbers for easy selection
                     }
