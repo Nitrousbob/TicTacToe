@@ -8,13 +8,18 @@
 
         }
 
-        public static void showQuestion(Game game)
+        public static int ShowQuestion(Game game)
         {
-            Console.WriteLine($"{game.Player1.Name} What square would you like to place your {game.Player1.Mark} on? ");
-            string input = Console.ReadLine() ?? "";
+            Console.WriteLine($"\n{game.Player1.Name} What square would you like to place your \"{game.Player1.Mark}\" on? ");
+            int value;
+            while (!int.TryParse(Console.ReadLine(), out value))
+            {
+                Console.WriteLine("Please enter an available number.");
+            }
+            return value;
         }
 
-        public static void showBoard(Board board) //get the board object in to do work
+        public static void ShowBoard(Board board) //get the board object in to do work
         {
             int n = 0;
 

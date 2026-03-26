@@ -20,7 +20,7 @@
             }
 
             Game game = new Game(players[0], players[1]);
-            game.Turn(game);
+            game.Turn();
         }
     }
 }

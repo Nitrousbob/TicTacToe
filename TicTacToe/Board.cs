@@ -21,5 +21,16 @@
             return board[index];
         }
 
+        public void MarkSquare(int index, Player player)
+        {
+            if (GetSquare(index) == Mark.Empty)
+            {
+                board[index] = player.Mark;
+            }
+            else
+            {
+                Console.WriteLine("That spot is already taken");
+            }    
+        }
     }
 }

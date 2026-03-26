@@ -9,15 +9,23 @@
 
         public Game(Player player1, Player player2)
         {
-            Player Player1 = player1; //Add player 1 to game
-            Player Player2 = player2; //Add player 2 to game
+            Player1 = player1; //Add player 1 to game
+            Player2 = player2; //Add player 2 to game
             Board = new Board();  //create a new board
         }
 
-        public void Turn(Game game)
+        public void Turn()
         {
-            Display.showBoard(Board); //send the board object
-            Display.showQuestion(game);
+
+            while (true)
+            {
+                Display.ShowBoard(Board); //send the board object
+                int boardSelection = Display.ShowQuestion(this);
+                Board.MarkSquare(boardSelection, player);
+                
+                //check win condition, if winner then false
+                //change Player
+            }
         }
     }
 }
