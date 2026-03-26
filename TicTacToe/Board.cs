@@ -21,15 +21,17 @@
             return board[index];
         }
 
-        public void MarkSquare(int index, Player player)
+        public bool MarkSquare(int index, Mark mark)
         {
             if (GetSquare(index) == Mark.Empty)
             {
-                board[index] = player.Mark;
+                board[index] = mark;  //need to remove one for the board to update correctly
+                return true;
             }
             else
             {
                 Console.WriteLine("That spot is already taken");
+                return false;
             }    
         }
     }

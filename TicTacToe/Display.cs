@@ -10,13 +10,23 @@
 
         public static int ShowQuestion(Game game)
         {
-            Console.WriteLine($"\n{game.Player1.Name} What square would you like to place your \"{game.Player1.Mark}\" on? ");
-            int value;
-            while (!int.TryParse(Console.ReadLine(), out value))
+            Console.WriteLine($"\n{game.CurrentPlayer.Name} What square would you like to place your \"{game.CurrentPlayer.Mark}\" on? ");
+            while (true)
             {
-                Console.WriteLine("Please enter an available number.");
+                string input = Console.ReadLine() ?? "";
+                if (!int.TryParse(input, out int value))
+                {
+                    Console.WriteLine("Please enter a number.");
+                }
+                else if (value < 1 || value > 9)
+                {
+                    Console.WriteLine("Please enter a number from 1 to 9.");
+                }
+                else
+                {
+                    return value - 1;
+                }
             }
-            return value;
         }
 
         public static void ShowBoard(Board board) //get the board object in to do work
