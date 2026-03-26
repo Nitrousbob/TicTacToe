@@ -30,7 +30,6 @@
             }
             else
             {
-                Console.WriteLine("That spot is already taken");
                 return false;
             }    
         }

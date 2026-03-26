@@ -24,15 +24,20 @@
             {
                 Display.ShowBoard(Board); //send the board object
                 int boardSelection = Display.ShowQuestion(this);
-                Board.MarkSquare(boardSelection, CurrentPlayer.Mark);
-                if (CurrentPlayer == Player1)
+                bool success = Board.MarkSquare(boardSelection, CurrentPlayer.Mark);
+                if (CurrentPlayer == Player1 && success == true)
                 {
                     CurrentPlayer = Player2;
                 } 
-                else
+                else if (CurrentPlayer == Player2 && success == true) 
                 {
                     CurrentPlayer = Player1;
                 }
+                if (success == false)
+                {
+                    Console.WriteLine("That spot is taken, please try again.");
+                }
+
                 //check win condition, if winner then false
                 //change Player
             }
