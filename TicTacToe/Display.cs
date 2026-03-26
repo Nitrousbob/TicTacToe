@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TicTacToe
+﻿namespace TicTacToe
 {
     internal class Display
     {
@@ -12,6 +8,11 @@ namespace TicTacToe
 
         }
 
+        public static void showQuestion(Game game)
+        {
+            Console.WriteLine($"{game.Player1.Name} What square would you like to place your {game.Player1.Mark} on? ");
+            string input = Console.ReadLine() ?? "";
+        }
 
         public static void showBoard(Board board) //get the board object in to do work
         {
@@ -28,17 +29,17 @@ namespace TicTacToe
                 {
                     Console.Write("\n");
                 }
-                
-                
+
+
                 for (int j = 0; j < 3; j++)
                 {
-                    if (Board.Mark[n] == Board.Mark.Empty)
+                    if (board.GetSquare(n) == Mark.Empty)
                     {
-                        Console.Write($"[{n}] ");  //write the numbers for easy selection
+                        Console.Write($"[{n+1}] ");  //write the numbers for easy selection
                     }
                     else
                     {
-                        Console.Write($"{Board.Mark[n]}"); //write the mark that is there
+                        Console.Write($"[{board.GetSquare(n)}] "); //write the mark that is there
                     }
                     n++;
 

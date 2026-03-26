@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TicTacToe
+﻿namespace TicTacToe
 {
     internal class Player
     {
-        public string Name { get; private set;  }
+        public string Name { get; private set; }
+        public Mark Mark { get; private set; }
 
-        public Player(string name)
+        public Player(string name, Mark mark)
         {
             Name = name;
+            Mark = mark;
+            
         }
     }
 }
