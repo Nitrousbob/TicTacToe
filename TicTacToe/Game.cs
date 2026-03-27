@@ -19,8 +19,8 @@
 
         public void Turn()
         {
-
-            while (true)
+            bool playTurn = true;
+            while (playTurn)
             {
                 Display.ShowBoard(Board); //send the board object
                 int boardSelection = Display.ShowQuestion(this);
@@ -37,10 +37,24 @@
                 {
                     Console.WriteLine("That spot is taken, please try again.");
                 }
-
-                //check win condition, if winner then false
-                //change Player
+                playTurn = CanContinue();
+                //check win condition, if winner or full then false
             }
+        }
+
+        private bool CanContinue()
+        {
+            if (Board.HasWinner())
+            {
+                return false;
+            }
+            if (Board.IsFull())
+            {
+                return false;
+            }
+            return true;
+            
+            
         }
     }
 }
