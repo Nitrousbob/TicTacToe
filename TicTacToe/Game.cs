@@ -25,36 +25,37 @@
                 Display.ShowBoard(Board); //send the board object
                 int boardSelection = Display.ShowQuestion(this);
                 bool success = Board.MarkSquare(boardSelection, CurrentPlayer.Mark);
-                if (CurrentPlayer == Player1 && success == true)
-                {
-                    CurrentPlayer = Player2;
-                } 
-                else if (CurrentPlayer == Player2 && success == true) 
-                {
-                    CurrentPlayer = Player1;
-                }
-                if (success == false)
+                if (!success)
                 {
                     Console.WriteLine("That spot is taken, please try again.");
                 }
-                playTurn = CanContinue();
-                //check win condition, if winner or full then false
+                else if (Board.HasWinner())
+                {
+                    //Display winning message in Display alternately
+                    Console.WriteLine();
+                    Display.ShowBoard(Board);
+                    Console.WriteLine($"{CurrentPlayer.Name} has won!");
+                    playTurn = false;
+                }
+                else if (Board.IsFull())
+                {
+                    Console.WriteLine();
+                    Display.ShowBoard(Board);
+                    Console.WriteLine("There is a draw for this game!");
+                    playTurn = false;
+                }
+                else
+                {
+                    if (CurrentPlayer == Player1)
+                    {
+                        CurrentPlayer = Player2;
+                    }
+                    else if (CurrentPlayer == Player2)
+                    {
+                        CurrentPlayer = Player1;
+                    }
+                }   
             }
-        }
-
-        private bool CanContinue()
-        {
-            if (Board.HasWinner())
-            {
-                return false;
-            }
-            if (Board.IsFull())
-            {
-                return false;
-            }
-            return true;
-            
-            
         }
     }
 }
